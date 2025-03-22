@@ -1,0 +1,1 @@
+from interactive_query import SupabaseInteractiveQuerier; querier = SupabaseInteractiveQuerier(); results = querier.query_all_tables('227'); print(f"Net Income: {results['fs220a_2024_12'][0]['acct_661a']}")

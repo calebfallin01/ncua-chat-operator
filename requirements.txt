@@ -1,0 +1,7 @@
+supabase==1.0.3
+python-dotenv==1.0.0
+tenacity==8.2.3
+rich==13.6.0
+requests==2.32.3
+openai==1.13.3
+pinecone-client==2.2.4
