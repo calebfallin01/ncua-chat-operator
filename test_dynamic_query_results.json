@@ -1,0 +1,80 @@
+{
+  "basic_results": [
+    {
+      "id": 641,
+      "cu_number": 5536,
+      "cycle_date": "12/31/2024 0:00:00",
+      "acct_010": 180813031049
+    }
+  ],
+  "multiple_results": [
+    {
+      "id": 641,
+      "cu_number": 5536,
+      "cycle_date": "12/31/2024 0:00:00",
+      "acct_010": 180813031049,
+      "acct_018": 151836184391
+    }
+  ],
+  "account_codes_results": {
+    "credit_union_info": {
+      "cu_number": "5536",
+      "cu_name": "NAVY FEDERAL CREDIT UNION",
+      "charter_no": null,
+      "charteryr": null,
+      "chartertype": null,
+      "state": "VA"
+    },
+    "results": {
+      "fs220_2024_12": [
+        {
+          "id": 641,
+          "cu_number": 5536,
+          "cycle_date": "12/31/2024 0:00:00",
+          "acct_010": 180813031049,
+          "acct_018": 151836184391
+        }
+      ],
+      "fs220a_2024_12": [
+        {
+          "id": 641,
+          "cu_number": 5536,
+          "cycle_date": "12/31/2024 0:00:00",
+          "acct_661a": 1707470818
+        }
+      ],
+      "foicu_2024_12": [
+        {
+          "id": 641,
+          "cu_number": 5536,
+          "cu_name": "NAVY FEDERAL CREDIT UNION",
+          "state": "VA"
+        }
+      ]
+    },
+    "query_type": "dynamic_sql",
+    "tables_queried": [
+      "fs220_2024_12",
+      "fs220a_2024_12",
+      "foicu_2024_12"
+    ],
+    "account_codes": {
+      "acct_010": {
+        "tablename": "FS220",
+        "name": "Total Assets"
+      },
+      "acct_018": {
+        "tablename": "FS220",
+        "name": "Total Shares/Deposits"
+      },
+      "acct_025": {
+        "tablename": "FS220",
+        "name": "Total Loans"
+      },
+      "acct_661a": {
+        "tablename": "FS220A",
+        "name": "Net Income"
+      }
+    }
+  }
+}

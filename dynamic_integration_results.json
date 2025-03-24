@@ -1,0 +1,201 @@
+{
+  "navy_federal_info": {
+    "cu_name": "NAVY FEDERAL CREDIT UNION",
+    "cu_number": "5536",
+    "credit_union_name": "NAVY FEDERAL CREDIT UNION"
+  },
+  "account_mappings": {
+    "Searching account descriptions for terms": {
+      "name": "['assets', 'loans', 'net income', 'members']",
+      "tablename": "unknown"
+    },
+    "Using status filter": {
+      "name": "true (only active accounts)",
+      "tablename": "unknown"
+    },
+    "Total account descriptions in database": {
+      "name": "3376",
+      "tablename": "unknown"
+    },
+    "Fetching account descriptions (offset": {
+      "name": "3000, limit: 1000)...",
+      "tablename": "unknown"
+    },
+    "Retrieved 1000 records (total": {
+      "name": "3000/3376)",
+      "tablename": "unknown"
+    },
+    "Sample account record": {
+      "name": "{'account': 'Acct_001', 'acctname': 'Amount - Total Other Loans (Purchased or to",
+      "tablename": "unknown"
+    },
+    "non-members)', 'tablename'": {
+      "name": "'FS220A', 'status': 'false'}",
+      "tablename": "unknown"
+    },
+    "Retrieved 376 records (total": {
+      "name": "3376/3376)",
+      "tablename": "unknown"
+    },
+    "Account code types": {
+      "name": "{'starts_with_acct': 3332, 'numeric_only': 441, 'other': 3499}",
+      "tablename": "unknown"
+    },
+    "Account status counts": {
+      "name": "{'true': 2504, 'false': 4768, 'unknown': 0}",
+      "tablename": "unknown"
+    },
+    "Sample matches": {
+      "name": "",
+      "tablename": "unknown"
+    },
+    "Acct_003": {
+      "name": "{'name': 'Loans Held for Sale', 'tablename': 'FS220C', 'status': 'true'}",
+      "tablename": "unknown"
+    },
+    "003": {
+      "name": "{'name': 'Loans Held for Sale', 'tablename': 'FS220C', 'status': 'true'}",
+      "tablename": "unknown"
+    },
+    "3": {
+      "name": "{'name': 'Loans Held for Sale', 'tablename': 'FS220C', 'status': 'true'}",
+      "tablename": "unknown"
+    },
+    "Account Mappings for": {
+      "name": "assets, loans, net income, members",
+      "tablename": "unknown"
+    },
+    "\u2502                        \u2502 Loans and Leases (Account 041B), that relates to": {
+      "name": "Whole or    \u2502        \u2502        \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0036            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Outstanding   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0036                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Outstanding   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0037            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0037                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0038            \u2502 Participation Loans": {
+      "name": "Participations Sold - Retained Balance   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0038                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Retained Balance   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0039            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0039                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0041            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0041                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0043            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0043                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0045            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0045                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0047            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0047                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0049            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0049                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0051            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0051                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0053            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0053                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0055            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0055                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0056            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Outstanding   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0056                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Outstanding   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0057            \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0057                 \u2502 Participation Loans": {
+      "name": "Participations Purchased - Purchased     \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0058            \u2502 Participation Loans": {
+      "name": "Participations Sold - Retained Balance   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0058                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Retained Balance   \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 ACCT_SL0059            \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    },
+    "\u2502 SL0059                 \u2502 Participation Loans": {
+      "name": "Participations Sold - Sold Year-To-Date  \u2502 FS220Q \u2502 true   \u2502",
+      "tablename": "unknown"
+    }
+  }
+}

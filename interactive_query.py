@@ -42,6 +42,8 @@ def parse_args():
     # Add account mapping functionality
     parser.add_argument('--account-mapping', action='store_true', help='Query account description table for mapping')
     parser.add_argument('--search-term', action='append', help='Term to search for in account descriptions')
+    parser.add_argument('--status-filter', choices=['true', 'false', 'all'], default='all', 
+                        help='Filter accounts by status (active/inactive)')
     
     # Add targeted query functionality
     parser.add_argument('--table', help='Specific table to query')
@@ -337,7 +339,8 @@ class SupabaseInteractiveQuerier:
                 console.print(f"[dim]Fetching account descriptions (offset: {offset}, limit: {page_size})...[/dim]")
                 
                 # Use pagination parameters to retrieve records in batches
-                response = self.client.table("acctdesc_2024_12").select("account,acctname,tablename").range(offset, offset + page_size - 1).execute()
+                # Include status field to filter active/inactive accounts
+                response = self.client.table("acctdesc_2024_12").select("account,acctname,tablename,status").range(offset, offset + page_size - 1).execute()
                 
                 if response and hasattr(response, 'data') and response.data:
                     batch_size = len(response.data)
@@ -354,6 +357,8 @@ class SupabaseInteractiveQuerier:
                         acct_name = item.get('acctname')
                         # Also get the tablename for more precise querying later
                         tablename = item.get('tablename')
+                        # Get status to filter active/inactive accounts
+                        status = item.get('status')
                         
                         # Skip if account or acctname is None
                         if acct_code is None or acct_name is None:
@@ -362,10 +367,11 @@ class SupabaseInteractiveQuerier:
                         # Always convert to string to handle numeric codes
                         acct_code_str = str(acct_code)
                         
-                        # Create a more detailed entry with tablename
+                        # Create a more detailed entry with tablename and status
                         entry = {
                             'name': acct_name,
-                            'tablename': tablename
+                            'tablename': tablename,
+                            'status': status
                         }
                         
                         # Store the original code
@@ -390,17 +396,33 @@ class SupabaseInteractiveQuerier:
             # Print summary of loaded descriptions
             console.print(f"[green]Loaded {len(account_descriptions)} account descriptions (from {total_retrieved} records)[/green]")
             
-            # Print some stats about the types of account codes
+            # Print some stats about the types of account codes and status
             types_count = {'starts_with_acct': 0, 'numeric_only': 0, 'other': 0}
-            for code in account_descriptions.keys():
+            status_count = {'true': 0, 'false': 0, 'unknown': 0}
+            
+            for code, entry in account_descriptions.items():
+                # Count code types
                 if code.lower().startswith('acct_'):
                     types_count['starts_with_acct'] += 1
                 elif code.isdigit():
                     types_count['numeric_only'] += 1
                 else:
                     types_count['other'] += 1
+                
+                # Count status types
+                if isinstance(entry, dict) and 'status' in entry:
+                    status_val = str(entry['status']).lower()
+                    if status_val == 'true':
+                        status_count['true'] += 1
+                    elif status_val == 'false':
+                        status_count['false'] += 1
+                    else:
+                        status_count['unknown'] += 1
+                else:
+                    status_count['unknown'] += 1
             
             console.print(f"[dim]Account code types: {types_count}[/dim]")
+            console.print(f"[dim]Account status counts: {status_count}[/dim]")
             
         except Exception as e:
             console.print(f"[yellow]Error retrieving account descriptions: {str(e)}[/yellow]")
@@ -674,12 +696,13 @@ class SupabaseInteractiveQuerier:
             
             console.print(f"[green]Results exported to {filename}[/green]")
 
-    def search_account_descriptions(self, search_terms: List[str]) -> Dict[str, Dict[str, str]]:
+    def search_account_descriptions(self, search_terms: List[str], status_filter: str = 'all') -> Dict[str, Dict[str, str]]:
         """
         Search account descriptions table for matching terms.
         
         Args:
             search_terms: List of terms to search for in account descriptions
+            status_filter: Filter accounts by status ('true' for active, 'false' for inactive, 'all' for both)
             
         Returns:
             Dictionary mapping account codes to information about them
@@ -699,24 +722,38 @@ class SupabaseInteractiveQuerier:
                     acct_name = entry.get('name', '').lower()
                     tablename = entry.get('tablename', '')
                     
+                    # Check status if we're filtering by it
+                    if status_filter != 'all' and 'status' in entry:
+                        entry_status = str(entry['status']).lower()
+                        if entry_status != status_filter:
+                            continue
+                    
                     # Check if any search term is in the account name
                     if any(term in acct_name for term in normalized_terms):
                         account_mappings[acct_code] = {
                             'name': entry.get('name'),
-                            'tablename': tablename
+                            'tablename': tablename,
+                            'status': entry.get('status', None)
                         }
                 else:
                     # Handle string values (backward compatibility)
                     acct_name = str(entry).lower()
                     
+                    # Can't filter by status if entry is just a string
+                    if status_filter != 'all':
+                        continue
+                    
                     # Check if any search term is in the account name
                     if any(term in acct_name for term in normalized_terms):
                         account_mappings[acct_code] = {
                             'name': entry,
-                            'tablename': 'unknown'  # Can't determine tablename for this format
+                            'tablename': 'unknown',  # Can't determine tablename for this format
+                            'status': None
                         }
                         
             console.print(f"[green]Found {len(account_mappings)} account codes matching search terms[/green]")
+            if status_filter != 'all':
+                console.print(f"[dim]Filtered to accounts with status={status_filter}[/dim]")
             
             # Print samples of what was found
             if account_mappings:
@@ -809,7 +846,10 @@ def main():
                 return
                 
             console.print(f"[green]Searching account descriptions for terms: {args.search_term}[/green]")
-            account_mappings = querier.search_account_descriptions(args.search_term)
+            if args.status_filter != 'all':
+                console.print(f"[green]Using status filter: {args.status_filter} (only {'active' if args.status_filter == 'true' else 'inactive'} accounts)[/green]")
+                
+            account_mappings = querier.search_account_descriptions(args.search_term, args.status_filter)
             
             # Output as JSON if requested
             if args.output_json:
@@ -824,13 +864,14 @@ def main():
                 table.add_column("Account Code", style="cyan")
                 table.add_column("Name", style="green")
                 table.add_column("Table", style="magenta")
+                table.add_column("Status", style="yellow")
                 
                 for code, details in account_mappings.items():
-                    table.add_row(
-                        code,
-                        details.get('name', 'Unknown'),
-                        details.get('tablename', 'Unknown')
-                    )
+                    name = details.get('name', '') if isinstance(details, dict) else str(details)
+                    tablename = details.get('tablename', 'unknown') if isinstance(details, dict) else 'unknown'
+                    status = details.get('status', 'unknown') if isinstance(details, dict) else 'unknown'
+                    
+                    table.add_row(code, name, tablename, str(status))
                 
                 console.print(table)
             
